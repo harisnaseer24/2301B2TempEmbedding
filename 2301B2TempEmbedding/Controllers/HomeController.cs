@@ -7,7 +7,15 @@ namespace _2301B2TempEmbedding.Controllers
        
         public IActionResult Index()
         {
-            return View();
+            if (HttpContext.Session.GetString("role") == "user")
+            {
+                ViewBag.userEmail = HttpContext.Session.GetString("userEmail");
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login", "Admin");
+            }
         }
 
         public IActionResult Privacy()
