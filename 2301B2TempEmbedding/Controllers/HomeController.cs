@@ -19,11 +19,13 @@ namespace _2301B2TempEmbedding.Controllers
             //}
             return View();
         }
-
+        [Authorize(Roles ="Admin")]
         public IActionResult Privacy()
         {
             return View();
         }
+
+        [Authorize(Roles = "User")]
 
         public IActionResult Contact()
         {

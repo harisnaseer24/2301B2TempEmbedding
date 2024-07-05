@@ -66,7 +66,7 @@ namespace _2301B2TempEmbedding.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Addprod(Product prd)
+        public IActionResult Addprod(products prd)
         {
             if (ModelState.IsValid)
             {

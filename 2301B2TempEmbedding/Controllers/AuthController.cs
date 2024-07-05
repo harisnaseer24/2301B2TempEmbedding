@@ -23,7 +23,6 @@ namespace _2301B2TempEmbedding.Controllers
 
             if (email == "admin@gmail.com" && pass == "123")
             {
-
                 identity = new ClaimsIdentity(new[]
                 {
                     new Claim(ClaimTypes.Name ,"Haris"),
@@ -60,11 +59,13 @@ namespace _2301B2TempEmbedding.Controllers
 
                 return View();
             }
-
-
-
-
-            return View();
         }
+        public IActionResult Logout()
+        {
+            var login = HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Login");
+        }
+
+
     }
 }
