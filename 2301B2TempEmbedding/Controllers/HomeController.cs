@@ -25,7 +25,7 @@ namespace _2301B2TempEmbedding.Controllers
             return View();
         }
 
-        [Authorize(Roles = "User")]
+        [Authorize]
 
         public IActionResult Contact()
         {

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using _2301B2TempEmbedding.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace _2301B2TempEmbedding.Controllers
 {
@@ -19,13 +20,14 @@ namespace _2301B2TempEmbedding.Controllers
         }
 
         // GET: Products
+        [Authorize (Roles ="Admin")]
         public async Task<IActionResult> Index()
         {
               return _context.Products != null ? 
                           View(await _context.Products.ToListAsync()) :
                           Problem("Entity set 'FoodContext.Products'  is null.");
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: Products/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -43,7 +45,7 @@ namespace _2301B2TempEmbedding.Controllers
 
             return View(product);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: Products/Create
         public IActionResult Create()
         {
@@ -53,6 +55,7 @@ namespace _2301B2TempEmbedding.Controllers
         // POST: Products/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Pname,Description,Price")] Product product)
@@ -67,6 +70,7 @@ namespace _2301B2TempEmbedding.Controllers
         }
 
         // GET: Products/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Products == null)
@@ -85,6 +89,7 @@ namespace _2301B2TempEmbedding.Controllers
         // POST: Products/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Pname,Description,Price")] Product product)
@@ -118,6 +123,7 @@ namespace _2301B2TempEmbedding.Controllers
         }
 
         // GET: Products/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Products == null)
@@ -136,6 +142,7 @@ namespace _2301B2TempEmbedding.Controllers
         }
 
         // POST: Products/Delete/5
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

@@ -19,6 +19,7 @@ namespace _2301B2TempEmbedding.Controllers
         {
 
             bool IsAuthenticated = false;
+            bool IsAdmin = false;
             ClaimsIdentity identity = null;
 
             if (email == "admin@gmail.com" && pass == "123")
@@ -30,6 +31,7 @@ namespace _2301B2TempEmbedding.Controllers
                 }
                ,CookieAuthenticationDefaults.AuthenticationScheme);
                 IsAuthenticated = true;
+                IsAdmin = true;
             }
             else if (email == "user@gmail.com" && pass == "123")
             {
@@ -46,7 +48,15 @@ namespace _2301B2TempEmbedding.Controllers
                 IsAuthenticated = false;
 
             }
-            if (IsAuthenticated)
+            if (IsAuthenticated && IsAdmin)
+            {
+                var principal = new ClaimsPrincipal(identity);
+
+                var login = HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+
+                return RedirectToAction("Index", "Admin");
+            }
+            else if(IsAuthenticated)
             {
                 var principal = new ClaimsPrincipal(identity);
 
