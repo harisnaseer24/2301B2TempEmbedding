@@ -40,6 +40,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/harisnaseer/source/repos/2301B2TempEmbedding/2301B2TempEmbedding/Views/Custom/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/harisnaseer/source/repos/2301B2TempEmbedding/2301B2TempEmbedding/Views/Custom/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/harisnaseer/source/repos/2301B2TempEmbedding/2301B2TempEmbedding/Views/Custom/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -90,6 +98,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/harisnaseer/source/repos/2301B2TempEmbedding/2301B2TempEmbedding/Views/User/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/harisnaseer/source/repos/2301B2TempEmbedding/2301B2TempEmbedding/Views/User/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/harisnaseer/source/repos/2301B2TempEmbedding/2301B2TempEmbedding/Views/User/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/harisnaseer/source/repos/2301B2TempEmbedding/2301B2TempEmbedding/Views/User/Index.cshtml]
