@@ -15,6 +15,10 @@ public partial class FoodContext : DbContext
     {
     }
 
+    public virtual DbSet<Category> Categories { get; set; }
+
+    public virtual DbSet<Item> Items { get; set; }
+
     public virtual DbSet<Product> Products { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
@@ -25,6 +29,24 @@ public partial class FoodContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Category>(entity =>
+        {
+            entity.HasKey(e => e.CatId).HasName("PK__Categori__6A1C8AFA62D0A215");
+
+            entity.Property(e => e.CatName).HasMaxLength(50);
+        });
+
+        modelBuilder.Entity<Item>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__Items__3214EC072626D3BA");
+
+            entity.Property(e => e.Name).HasMaxLength(50);
+
+            entity.HasOne(d => d.Cat).WithMany(p => p.Items)
+                .HasForeignKey(d => d.CatId)
+                .HasConstraintName("FK_Items_ToTable");
+        });
+
         modelBuilder.Entity<Product>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__products__3214EC07A5D271A2");
