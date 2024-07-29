@@ -1,13 +1,45 @@
 ﻿using System.Security.Claims;
 
+using _2301B2TempEmbedding.Models;
+
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace _2301B2TempEmbedding.Controllers
 {
     public class AuthController : Controller
     {
+
+        private readonly FoodContext _db;
+        public AuthController(FoodContext db)
+        {
+            _db = db;
+        }
+
+        public IActionResult Signup()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Signup(User user)
+        {
+            var checkExistingUser = _db.Users.FirstOrDefault(o =>o.Email == user.Email);
+            if(checkExistingUser != null)
+            {
+                ViewBag.msg = "User already registered";
+                return View();
+            }
+
+            var hasher = new PasswordHasher<string>();
+            user.Password = hasher.HashPassword(user.Email, user.Password);
+            _db.Users.Add(user);
+            _db.SaveChanges();
+            return RedirectToAction("Login");
+        }
+
         public IActionResult Login()
         {
             return View();

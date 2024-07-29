@@ -76,6 +76,9 @@ public partial class FoodContext : DbContext
                 .HasMaxLength(250)
                 .IsUnicode(false)
                 .HasColumnName("password");
+            entity.Property(e => e.RoleId)
+                .HasDefaultValueSql("((2))")
+                .HasColumnName("roleId");
             entity.Property(e => e.Username)
                 .HasMaxLength(100)
                 .IsUnicode(false)
