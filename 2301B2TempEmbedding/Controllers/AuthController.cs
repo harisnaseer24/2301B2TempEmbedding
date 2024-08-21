@@ -1,4 +1,6 @@
-﻿using System.Security.Claims;
+﻿using System.Net.Mail;
+using System.Net;
+using System.Security.Claims;
 
 using _2301B2TempEmbedding.Models;
 
@@ -37,7 +39,12 @@ namespace _2301B2TempEmbedding.Controllers
             user.Password = hasher.HashPassword(user.Email, user.Password);
             _db.Users.Add(user);
             _db.SaveChanges();
-            return RedirectToAction("Login");
+
+            if (SendEmail(user.Email,"Your account has been created Successfully.", "Registeration Success"))
+            {
+                ViewBag.msg = "Check your Inbox.";
+            }
+            return View();
         }
 
         public IActionResult Login()
@@ -111,6 +118,25 @@ namespace _2301B2TempEmbedding.Controllers
                 return View();
             }
 
+        }
+
+        public bool SendEmail(string email, string message, string subject)
+        {
+
+            SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
+            client.EnableSsl = true;
+            client.UseDefaultCredentials = false;
+            client.Credentials = new NetworkCredential("harisnaseer258@gmail.com", "");
+
+            MailMessage msg = new MailMessage("harisnaseer258@gmail.com", email);
+            msg.Subject = subject;
+            msg.Body = message;
+
+            // msg.Attachments.Add(new Attachment(PathToAttachment));
+            client.Send(msg);
+
+           
+            return true;
         }
         public IActionResult Logout()
         {
